@@ -4,4 +4,7 @@ button {
 ul :hover {
     text-decoration: line-through;
 }
+li :hover {
+    text-decoration: none;
+}
 
