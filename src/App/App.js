@@ -14,6 +14,8 @@ class App extends React.Component {
        this.setState(state => ({
         items: [...state.items,{ id: state.items.length + 1, newItem }]
       }));
+
+       console.log("sdf");
   };
 
   deleteItem = index => {
