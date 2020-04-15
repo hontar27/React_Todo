@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 
 class MyInput extends React.Component {
 
@@ -9,11 +10,15 @@ class MyInput extends React.Component {
         this.setState({value: inputText});
     };
 
-    handleSubmit = (event) => {
+    handleSubmit = event => {
         event.preventDefault();
-        this.props.addItem(this.state.value);
+        this.props.addItem({
+            id: shortid.generate(),
+            newItem: this.state.value,
+            complete: false
+        });
         this.setState({
-            value: ''
+            value: ""
         });
     };
 
