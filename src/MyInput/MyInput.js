@@ -12,6 +12,9 @@ class MyInput extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.addItem(this.state.value);
+        this.setState({
+            value: ''
+        });
     };
 
     render() {
