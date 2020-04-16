@@ -17,8 +17,9 @@ class App extends React.Component {
   };
 
   deleteItem = index => {
-      this.state.items.splice(index, 1);
-      this.setState({items: this.state.items});
+      const items = this.state.items.concat()
+      items.splice(index, 1)
+      this.setState({items})
   };
 
   render() {
@@ -27,7 +28,6 @@ class App extends React.Component {
           <MyInput addItem={this.addItem}/>
           <DropList items={this.state.items}
                     deleteItem={this.deleteItem} />
-
         </div>
     );
   }
