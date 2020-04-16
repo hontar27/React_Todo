@@ -21,12 +21,29 @@ class App extends React.Component {
       this.setState({items: this.state.items});
   };
 
+    toggleComplete = index => {
+        console.log('test');
+        this.setState(state => ({
+            items: state.items.map(item => {
+                if (item.index === index) {
+                    return {
+                        ...item,
+                        complete: !item.complete
+                    };
+                } else {
+                    return item;
+                }
+            })
+        }));
+    };
+
   render() {
     return (
         <div>
           <MyInput addItem={this.addItem}/>
           <DropList items={this.state.items}
-                    deleteItem={this.deleteItem} />
+                    deleteItem={this.deleteItem}
+                    toggleComplete={this.toggleComplete}/>
 
         </div>
     );
