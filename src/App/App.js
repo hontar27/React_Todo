@@ -16,10 +16,16 @@ class App extends React.Component {
       }));
   };
 
+    // deleteItem = id => {
+    //     this.setState(state => ({
+    //         items: state.items.filter(item => item.id !== id)
+    //     }));
+    // };
+
     deleteItem = id => {
-        this.setState(state => ({
-            items: state.items.filter(item => item.id !== id)
-        }));
+        const items = this.state.items;
+        items.filter(item => item.id !== id);
+        this.setState({items})
     };
 
     toggleComplete = id => {
