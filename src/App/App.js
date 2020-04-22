@@ -16,16 +16,16 @@ class App extends React.Component {
       }));
   };
 
-    deleteItem = id => {
-        this.setState(state => ({
-            items: state.items.filter(item => item.id !== id)
-        }));
-    };
+  deleteItem = index => {
+      this.state.items.splice(index, 1);
+      this.setState({items: this.state.items});
+  };
 
-    toggleComplete = id => {
+    toggleComplete = index => {
+        console.log('test');
         this.setState(state => ({
             items: state.items.map(item => {
-                if (item.id === id) {
+                if (item.index === index) {
                     return {
                         ...item,
                         complete: !item.complete
@@ -41,14 +41,10 @@ class App extends React.Component {
     return (
         <div>
           <MyInput addItem={this.addItem}/>
-            {this.state.items.map(item => (
-                <DropList
-                    key={item.id}
-                    toggleComplete={() => this.toggleComplete(item.id)}
-                    deleteItem={() => this.deleteItem(item.id)}
-                    item={item}
-                />
-            ))}
+          <DropList items={this.state.items}
+                    deleteItem={this.deleteItem}
+                    toggleComplete={this.toggleComplete}/>
+
         </div>
     );
   }
