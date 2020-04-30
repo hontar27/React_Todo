@@ -17,11 +17,12 @@ class App extends React.Component {
   };
 
     deleteItem = id => {
-        const items = this.state.items
-        this.setState({
-            items: items.filter(item => item.id !== id)
+        this.setState((state) => {
+            return {
+                items: state.items.filter(item => item.id !== id)
+            }
         })
-    };
+    }
 
     toggleComplete = id => {
         this.setState(state => ({
